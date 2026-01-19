@@ -1,26 +1,92 @@
-@import "tailwindcss";
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Basic site defaults */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-zinc-50 text-zinc-900 dark:bg-black dark:text-zinc-50;
+}
+
+
+#__next {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+}
+
+/* Use @apply (valid usage) for utility composition */
+:root {
+  /* nothing here that uses raw utility names */
+}
+
+
+.dark body {
+  @apply bg-black text-zinc-50;
+}
+
+/* Inputs */
+input,
+textarea,
+select,
+button {
+  @apply border border-zinc-300 dark:border-zinc-700 rounded-md p-2 bg-transparent;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  @apply outline-none border-blue-500;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+a {
+  @apply text-blue-600 hover:underline;
+}
+
+.dark a {
+  @apply text-blue-400;
+}
+
+code {
+  @apply font-mono bg-zinc-200 dark:bg-zinc-800 px-1 rounded;
+}
+
+pre {
+  @apply bg-zinc-900 text-zinc-100 p-4 rounded overflow-x-auto;
+}
+
+pre code {
+  @apply bg-transparent px-0;
+}
+
+hr {
+  @apply border-t border-zinc-300 my-8;
+}
+
+.dark hr {
+  @apply border-zinc-700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold;
+}
+
+::-webkit-scrollbar {
+  @apply w-2 h-2;
 }
